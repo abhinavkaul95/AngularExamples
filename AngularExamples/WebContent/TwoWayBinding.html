@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="scripts/angular.js"></script>
+<script type="text/javascript">
+var app = angular.module("twoway",[]);
+app.controller("CurrencyController", function($scope){
+	$scope.data = {inr:0, convRate:65, usd:0};
+	$scope.convert = function(){
+		$scope.data.usd = $scope.data.inr * $scope.data.convRate;
+	}
+});
+</script>
+<title>Two Way Binding</title>
+</head>
+<body>
+<div data-ng-app="twoway" data-ng-controller="CurrencyController">
+<form action="">
+<label>INR:</label><input type="text" name="inr" data-ng-change="convert()" data-ng-model="data.inr"><br>
+<label>Conv Rate:</label><input type="text" name="convRate" value={{data.convRate}} readonly><br>
+{{data.usd}}
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="scripts/angular.js"></script>
+<script type="text/javascript" src="scripts/MyApp.js"></script>
+</head>
+<body>
+<div data-ng-app="iteration" data-ng-controller="projectController">
+<label>Code: </label><input data-ng-model="code">
+<label>Description: </label><input data-ng-model="desc">
+<label>Cost: </label><input data-ng-model="cost">
+<div>{{code}}</div><div>{{desc}}</div><div>{{cost}}</div>
+<input type="text" name="srch" data-ng-model="srch">
+<table>
+<tr>
+<th>Code</th>
+<th>Description</th>
+<th>Cost</th>
+</tr>
+<tr data-ng-repeat="project in projectDetails | filter:srch | orderBy:'code'" id="data">
+<td>{{project.projCode}}</td>
+<td>{{project.description | uppercase}}</td>
+<td>{{project.cost | currency:'Rs. '}}</td>
+</tr>
+</table>
+<input type="button" value="Add" id="button" data-ng-click="add()">
+</div>
+</body>
+</html>
